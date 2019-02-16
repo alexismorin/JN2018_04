@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_AlexisToonRamp
-  m_Shader: {fileID: 4800000, guid: 51c64eef3e9777b408a1dbd32133ac34, type: 3}
+  m_Name: M_Items_Bleus 1
+  m_Shader: {fileID: 4800000, guid: a06e5b76c39eab842ba509fae94d15c8, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Diffuse:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 381373f4372cf874f807ba655f624a5f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -45,6 +45,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MatCap:
+        m_Texture: {fileID: 2800000, guid: c19ccb549fefa88499208c99b596de5a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -68,7 +72,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ASEOutlineWidth: 0.02
+    - _ASEOutlineWidth: 0.01
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -88,7 +92,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColour: {r: 1, g: 1, b: 1, a: 0}
+    - _ASEOutlineColor: {r: 0.2783019, g: 0.545469, b: 1, a: 0}
+    - _BaseColour: {r: 0, g: 0.1506947, b: 0.5943396, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
