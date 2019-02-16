@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PrisonManager : MonoBehaviour {
 
     public GameObject[] zones;
+    public GameObject[] spawnPoints;
     public GameObject[] keysPrefabs; // a b c d
     [Space (10)]
     string[] separatingChars = { "-" };
@@ -17,6 +19,32 @@ public class PrisonManager : MonoBehaviour {
     public int currentPlayer = 0;
     [Space (10)]
     public string[] openExits;
+    [Space (10)]
+    public string pendingNewCaseCode;
+    public float alarmTimer = 200f;
+    public bool isTimerDecreasing;
+
+    void Update () {
+
+        if (alarmTimer <= 0f) {
+            if (isTimerDecreasing) {
+                Alarm ();
+                isTimerDecreasing = false;
+            }
+
+        }
+
+        if (isTimerDecreasing == true && alarmTimer >= 0f) {
+            alarmTimer -= 1f * Time.deltaTime;
+        }
+    }
+
+    void Alarm () {
+        GameObject[] guards = GameObject.FindGameObjectsWithTag ("guard");
+        for (int i = 0; i < guards.Length; i++) {
+            guards[i].SendMessage ("Alarm", SendMessageOptions.DontRequireReceiver);
+        }
+    }
 
     void RandomizeCaseCode () { // Debug function that gets a random case code on new game - eventually we keep the last one
 
@@ -26,6 +54,28 @@ public class PrisonManager : MonoBehaviour {
             guardsCaseCode += (zone.GetComponent<Zone> ().zoneID + "-");
         }
 
+        itemCaseCode = guardsCaseCode;
+
+        string[] tempDecryptedItemCaseCode = itemCaseCode.Split (separatingChars, System.StringSplitOptions.RemoveEmptyEntries);
+        string[] tempScrambledItemCaseCode = new string[tempDecryptedItemCaseCode.Length];
+
+        for (int i = 0; i < tempDecryptedItemCaseCode.Length; i++) {
+            tempScrambledItemCaseCode[i] = (zones.Length - int.Parse (tempDecryptedItemCaseCode[i]) - 1).ToString ();
+        }
+
+        itemCaseCode = "";
+
+        foreach (string character in tempScrambledItemCaseCode) {
+            itemCaseCode += (character + "-");
+        }
+
+        PlayerPrefs.SetString ("itemCaseCode", itemCaseCode);
+        PlayerPrefs.SetString ("guardsCaseCode", itemCaseCode);
+
+    }
+
+    void GetLatestCaseCode () {
+        guardsCaseCode = PlayerPrefs.GetString ("guardsCaseCode", "0-1-2-3-");
         itemCaseCode = guardsCaseCode;
 
         string[] tempDecryptedItemCaseCode = itemCaseCode.Split (separatingChars, System.StringSplitOptions.RemoveEmptyEntries);
@@ -56,6 +106,7 @@ public class PrisonManager : MonoBehaviour {
 
     void Start () {
         zones = GameObject.FindGameObjectsWithTag ("zone");
+        spawnPoints = GameObject.FindGameObjectsWithTag ("jailSpawnPoint");
 
         StartNewGame ();
     }
@@ -69,16 +120,51 @@ public class PrisonManager : MonoBehaviour {
 
         itemCaseCode = "";
         guardsCaseCode = "";
+        pendingNewCaseCode = "";
 
         currentPlayer = 1;
-
-        RandomizeCaseCode (); // we should replace this with an actual fetch
+        alarmTimer = 200f;
+        //    RandomizeCaseCode (); // we should replace this with an actual fetch
+        GetLatestCaseCode ();
 
         DecryptItemCaseCode ();
         DecryptGuardsCaseCode ();
 
         SpawnGuards ();
         SpawnItems ();
+
+        MovePlayer ();
+    }
+
+    void StartNewEscape () {
+
+        GetLatestCaseCode ();
+        pendingNewCaseCode = "";
+
+        currentPlayer++;
+        alarmTimer = 200f - (currentPlayer * 25f);
+        //    RandomizeCaseCode (); // we should replace this with an actual fetch
+
+        DecryptItemCaseCode ();
+        DecryptGuardsCaseCode ();
+
+        SpawnGuards ();
+        //   SpawnItems ();
+
+        MovePlayer ();
+    }
+
+    public void MovePlayer () {
+        GameObject playerObject = GameObject.Find ("Player");
+        playerObject.GetComponent<FirstPersonController> ().enabled = false;
+        playerObject.transform.GetChild (0).GetComponent<Interact> ().Void ();
+        playerObject.transform.position = spawnPoints[Random.Range (0, spawnPoints.Length)].transform.position;
+        Invoke ("GivePlayerControl", 2f);
+    }
+
+    public void GivePlayerControl () {
+        GameObject playerObject = GameObject.Find ("Player");
+        playerObject.GetComponent<FirstPersonController> ().enabled = true;
     }
 
     public void SpawnItems () { // forgive me justin
@@ -105,9 +191,20 @@ public class PrisonManager : MonoBehaviour {
         }
     }
 
+    public void AddToCurrentCaseCode (int zoneCode) {
+        pendingNewCaseCode += zoneCode.ToString () + "-";
+    }
+
     public void EndEscape () {
+
+        isTimerDecreasing = false;
+        PlayerPrefs.SetFloat ("PlayerTime" + currentPlayer.ToString (), alarmTimer);
+
         if (currentPlayer == 4) {
             // end game
+        } else {
+            PlayerPrefs.SetString ("guardsCaseCode", pendingNewCaseCode);
+            StartNewEscape ();
         }
     }
 
