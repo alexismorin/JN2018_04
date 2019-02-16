@@ -14,6 +14,7 @@ public class ItemPickup : MonoBehaviour {
     public void Interact (string heldItem) {
 
         inventoryScript.Equip (keyID);
+        print(gameObject + " was picked up");
         Destroy (gameObject);
     }
 }

@@ -15,6 +15,7 @@ public class Exit : MonoBehaviour {
         if (interactedItem == exitType) {
             exitType = "closed";
             PlayerPrefs.SetInt ("PlayerEscaped" + manager.currentPlayer.ToString (), 1);
+            print("Player escaped!");
             manager.EndEscape ();
         }
     }

@@ -255,5 +255,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+
+        //Make player focus on guard that caught them.
+        public void IsCaught(GameObject guard)
+        {
+            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            transform.LookAt(guard.transform);
+        }
     }
 }

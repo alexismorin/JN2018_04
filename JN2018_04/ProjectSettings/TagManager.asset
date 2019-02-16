@@ -12,6 +12,7 @@ TagManager:
   - keySpawnLocationSpent
   - exitPoint
   - jailSpawnPoint
+  - cellDoor
   layers:
   - Default
   - TransparentFX

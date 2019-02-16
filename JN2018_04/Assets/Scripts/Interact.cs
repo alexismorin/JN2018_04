@@ -31,6 +31,8 @@ public class Interact : MonoBehaviour {
 
         if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), out hit, 3f, interactMask)) {
 
+            print(gameObject + " was dropped");
+
             for (int i = 0; i < keyPrefabNames.Length; i++) {
                 if (keyPrefabNames[i] == currentItem) {
                     GameObject.Instantiate (keyPrefabs[i], hit.transform.position, Quaternion.identity);

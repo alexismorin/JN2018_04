@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Guard : MonoBehaviour {
 
@@ -39,6 +40,7 @@ public class Guard : MonoBehaviour {
     }
 
     public void Alarm () {
+        print(gameObject + " is in Alarm Mode!");
         target = GameObject.Find ("Player");
         losedistance = 500f;
         CancelInvoke ("Chase");
@@ -49,6 +51,7 @@ public class Guard : MonoBehaviour {
 
     void OnTriggerEnter (Collider other) {
         if (other.gameObject.tag == "Player") {
+            print(gameObject + " was triggered");
             target = other.gameObject;
             CancelInvoke ("Wander");
             isChasing = true;
@@ -72,6 +75,7 @@ public class Guard : MonoBehaviour {
     }
 
     void LoseTrack () {
+        print(gameObject + " lost sight of the prisonner");
         isChasing = false;
         CancelInvoke ("Chase");
         InvokeRepeating ("Wander", wanderRate, wanderRate);
@@ -79,6 +83,10 @@ public class Guard : MonoBehaviour {
     }
 
     void Catch () {
+        print("Player was caught!");
+
+        //Make player focus on guard that caught them.
+        target.GetComponent<FirstPersonController>().IsCaught(gameObject);
 
         manager.EndEscape ();
         isChasing = false;
