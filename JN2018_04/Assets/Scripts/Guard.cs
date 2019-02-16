@@ -34,13 +34,15 @@ public class Guard : MonoBehaviour {
     }
 
     void Chase () {
+        if (agent.isOnNavMesh == true) {
+            agent.destination = target.transform.position;
 
-        agent.destination = target.transform.position;
+        }
 
     }
 
     public void Alarm () {
-        print(gameObject + " is in Alarm Mode!");
+        print (gameObject + " is in Alarm Mode!");
         target = GameObject.Find ("Player");
         losedistance = 500f;
         CancelInvoke ("Chase");
@@ -51,7 +53,7 @@ public class Guard : MonoBehaviour {
 
     void OnTriggerEnter (Collider other) {
         if (other.gameObject.tag == "Player") {
-            print(gameObject + " was triggered");
+            print (gameObject + " was triggered");
             target = other.gameObject;
             CancelInvoke ("Wander");
             isChasing = true;
@@ -75,7 +77,7 @@ public class Guard : MonoBehaviour {
     }
 
     void LoseTrack () {
-        print(gameObject + " lost sight of the prisonner");
+        print (gameObject + " lost sight of the prisonner");
         isChasing = false;
         CancelInvoke ("Chase");
         InvokeRepeating ("Wander", wanderRate, wanderRate);
@@ -83,10 +85,10 @@ public class Guard : MonoBehaviour {
     }
 
     void Catch () {
-        print("Player was caught!");
+        print ("Player was caught!");
 
         //Make player focus on guard that caught them.
-        target.GetComponent<FirstPersonController>().IsCaught(gameObject);
+        target.GetComponent<FirstPersonController> ().IsCaught (gameObject);
 
         manager.EndEscape ();
         isChasing = false;

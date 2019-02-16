@@ -13,6 +13,7 @@ TagManager:
   - exitPoint
   - jailSpawnPoint
   - cellDoor
+  - door
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PrisonManager : MonoBehaviour {
@@ -23,6 +24,12 @@ public class PrisonManager : MonoBehaviour {
     public string pendingNewCaseCode;
     public float alarmTimer = 200f;
     public bool isTimerDecreasing;
+    public Color[] playerColors;
+    public Text playerText;
+    public Text youreupText;
+    public Text wardenDialog;
+    public Text escapeStartedDialog;
+    public bool escapeStarted;
 
     void Update () {
 
@@ -142,7 +149,7 @@ public class PrisonManager : MonoBehaviour {
         pendingNewCaseCode = "";
 
         currentPlayer++;
-        alarmTimer = 200f - (currentPlayer * 25f);
+        alarmTimer = 200f - (currentPlayer * 18.5f);
         //    RandomizeCaseCode (); // we should replace this with an actual fetch
 
         DecryptItemCaseCode ();
@@ -159,12 +166,38 @@ public class PrisonManager : MonoBehaviour {
         playerObject.GetComponent<FirstPersonController> ().enabled = false;
         playerObject.transform.GetChild (0).GetComponent<Interact> ().Void ();
         playerObject.transform.position = spawnPoints[Random.Range (0, spawnPoints.Length)].transform.position;
-        Invoke ("GivePlayerControl", 2f);
+
+        playerText.color = playerColors[currentPlayer - 1];
+        playerText.text = "Player " + currentPlayer.ToString ();
+        playerText.enabled = true;
+        youreupText.enabled = true;
+        Invoke ("GivePlayerControl", 4f);
     }
 
     public void GivePlayerControl () {
+        playerText.enabled = false;
+        youreupText.enabled = false;
         GameObject playerObject = GameObject.Find ("Player");
         playerObject.GetComponent<FirstPersonController> ().enabled = true;
+
+        wardenDialog.text = "Alright Inmates, ever since the escape of inmate " + itemCaseCode + "Alpha, we've strenghted security in cell blocks " + guardsCaseCode + "Pendleton accordingly and alarm timers have been shortened to " + alarmTimer + " seconds. The escape was the first we've had and the last we'll have, so dont try anything funny.";
+        wardenDialog.enabled = true;
+
+        Invoke ("HideWardenDialog", 12f);
+    }
+
+    public void HideWardenDialog () {
+        wardenDialog.enabled = false;
+    }
+
+    public void StartEscape () {
+        escapeStarted = true;
+        escapeStartedDialog.enabled = true;
+        Invoke ("HideStartEscapeDialog", 2f);
+    }
+
+    public void HideStartEscapeDialog () {
+        escapeStartedDialog.enabled = false;
     }
 
     public void SpawnItems () { // forgive me justin
@@ -197,7 +230,9 @@ public class PrisonManager : MonoBehaviour {
 
     public void EndEscape () {
 
+        escapeStarted = false;
         isTimerDecreasing = false;
+        PlayerPrefs.SetFloat ("lastAlarmTimer", alarmTimer);
         PlayerPrefs.SetFloat ("PlayerTime" + currentPlayer.ToString (), alarmTimer);
 
         if (currentPlayer == 4) {
