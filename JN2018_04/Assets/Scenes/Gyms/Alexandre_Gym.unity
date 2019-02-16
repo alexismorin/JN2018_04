@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 43a09b6ebd324b24bb8e0bb0c5b6f3d5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43a09b6ebd324b24bb8e0bb0c5b6f3d5, type: 3}
 --- !u!1001 &240174754
@@ -231,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: dc683673175a6e4439a91e92a983c5ad, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc683673175a6e4439a91e92a983c5ad, type: 3}
 --- !u!1001 &245830370
@@ -292,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 6c71cbf4ae64c2b4bb3fef1494feb69d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c71cbf4ae64c2b4bb3fef1494feb69d, type: 3}
 --- !u!1001 &245953836
@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Furnace_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: ba1b83a8e9ffc754f87ce91baccb3264, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba1b83a8e9ffc754f87ce91baccb3264, type: 3}
 --- !u!1001 &312549936
@@ -410,7 +414,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 66fbb32b965b2ec45a89b23e179a8cf0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66fbb32b965b2ec45a89b23e179a8cf0, type: 3}
 --- !u!1001 &479975170
@@ -468,6 +472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Cell_Door_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: c8effb898e38f97428b229822504cef1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8effb898e38f97428b229822504cef1, type: 3}
 --- !u!1001 &594856790
@@ -528,7 +536,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: e06ac8c2520ea1346b846e8ea4ec4e98, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e06ac8c2520ea1346b846e8ea4ec4e98, type: 3}
 --- !u!1001 &678443827
@@ -586,6 +594,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_PipeCorner_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 57ff3a890c8e94e4294a5792c7617235, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57ff3a890c8e94e4294a5792c7617235, type: 3}
 --- !u!4 &678443828 stripped
@@ -652,7 +664,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: dc683673175a6e4439a91e92a983c5ad, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc683673175a6e4439a91e92a983c5ad, type: 3}
 --- !u!1 &1026048304
@@ -682,7 +694,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.8018868, g: 0.70794255, b: 0.5711552, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -779,6 +791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Pipe_3m_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cec66916a6bfe1144ae711daa527ce68, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec66916a6bfe1144ae711daa527ce68, type: 3}
 --- !u!1001 &1116268079
@@ -836,6 +852,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Pipe_1m_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: e0c018bd686185142beb2b4eb1070d3b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0c018bd686185142beb2b4eb1070d3b, type: 3}
 --- !u!4 &1116268080 stripped
@@ -902,7 +922,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 42f03626be5e81240848068c9900c7ca, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42f03626be5e81240848068c9900c7ca, type: 3}
 --- !u!1001 &1227260172
@@ -960,6 +980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Cell_body_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: ce48ef4b8bbf7134898382cafb872ec0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce48ef4b8bbf7134898382cafb872ec0, type: 3}
 --- !u!4 &1227260173 stripped
@@ -1023,6 +1047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Pipe_1m_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: e0c018bd686185142beb2b4eb1070d3b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0c018bd686185142beb2b4eb1070d3b, type: 3}
 --- !u!4 &1347808705 stripped
@@ -1089,7 +1117,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 2ea90ab4e6f029a40b55cb2a13cc3ba6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ea90ab4e6f029a40b55cb2a13cc3ba6, type: 3}
 --- !u!1 &1445643817
@@ -1232,7 +1260,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 37877d107e0b6794ab7ba1e463ffc698, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: 74dc05d58755a154ea1753266169f150, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37877d107e0b6794ab7ba1e463ffc698, type: 3}
 --- !u!1001 &1573021719
@@ -1290,6 +1318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_PipeCorner2_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: e1c3a8186abb609419f7b12c2caf5d5e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1c3a8186abb609419f7b12c2caf5d5e, type: 3}
 --- !u!4 &1573021720 stripped
@@ -1356,7 +1388,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 6a03aa73081add84a91b919a9103dd97, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee921ca2c3021184c9f1e9987992133a, type: 2}
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a03aa73081add84a91b919a9103dd97, type: 3}
 --- !u!1 &1847104723
@@ -1409,7 +1441,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1506,5 +1538,78 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Counter_AG
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9386e96418b4a4a48b4b7c661ef80c39, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9386e96418b4a4a48b4b7c661ef80c39, type: 3}
+--- !u!1 &2101721002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2101721004}
+  - component: {fileID: 2101721003}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &2101721003
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101721002}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 0.25642943, b: 0.18396229, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &2101721004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101721002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.92, y: 1.61, z: 0.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
