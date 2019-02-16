@@ -11,6 +11,7 @@ public class GameState : MonoBehaviour {
 
     public string startBtn = "Submit";
     public string quitBtn = "Quit";
+    public string menuBtn = "o";
 
     //State Variables
 
@@ -31,7 +32,7 @@ public class GameState : MonoBehaviour {
             Win();
         }
 
-        if (Input.GetKeyUp("space"))
+        if (Input.GetKeyUp(menuBtn))
         {
             MainMenu();
         }
