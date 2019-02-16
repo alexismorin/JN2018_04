@@ -11,7 +11,8 @@ public class SpawnZone : MonoBehaviour {
     }
 
     void OnTriggerExit (Collider other) {
-        if (other.gameObject.tag == "Player") {
+        if (other.gameObject.tag == "Player" && manager.escapeStarted == false) {
+            manager.StartEscape ();
             manager.isTimerDecreasing = true;
         }
     }
