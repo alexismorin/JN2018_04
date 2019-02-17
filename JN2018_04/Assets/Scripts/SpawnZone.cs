@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnZone : MonoBehaviour {
 
     PrisonManager manager;
+    public Transform dropLocation;
 
     void Start () {
         manager = GameObject.Find ("GameStateManager").GetComponent<PrisonManager> ();

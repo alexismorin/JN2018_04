@@ -12,6 +12,7 @@ public class ScrambleZones : MonoBehaviour {
 
         for (int i = 0; i < originalZoneOrder.Length; i++) {
             originalZoneOrder[i] = i;
+            print (originalZoneOrder[i]);
 
         }
 
@@ -27,7 +28,7 @@ public class ScrambleZones : MonoBehaviour {
         for (int z = 0; z < zones.Length; z++) {
             zones[z].GetComponent<Zone> ().zoneID = newZoneOrder[z];
             zones[z].name = "Zone " + newZoneOrder[z].ToString ();
-
+            print (newZoneOrder[z]);
         }
 
     }

@@ -15,6 +15,10 @@ public class Guard : MonoBehaviour {
     bool isChasing;
     float losedistance = 20f;
 
+    public Texture2D idleTexture;
+    public Texture2D aimingTexture;
+    public MeshRenderer materialRenderer;
+
     public void OnEnable () {
         losedistance = 20f;
         CancelInvoke ("Chase");
