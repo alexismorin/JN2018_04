@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Exit : MonoBehaviour {
 
     PrisonManager manager;
     public string exitType = "a";
+    public GameObject player;
 
     void Start () {
         manager = GameObject.Find ("GameStateManager").GetComponent<PrisonManager> ();
+        player = GameObject.Find("Player");
     }
 
     public void Interact (string interactedItem) {
@@ -16,6 +19,7 @@ public class Exit : MonoBehaviour {
 
             int hostA = PlayerPrefs.GetInt ("sucessfulEscapes");
             float hostB = PlayerPrefs.GetInt ("sucessfulTimer");
+            player.GetComponent<FirstPersonController>().PlayVictorySound();
 
             hostA += 1;
             hostB += manager.alarmTimer;

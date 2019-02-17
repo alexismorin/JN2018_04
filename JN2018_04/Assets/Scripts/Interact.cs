@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Interact : MonoBehaviour {
 
@@ -16,6 +17,7 @@ public class Interact : MonoBehaviour {
             Discard (transform.parent.position);
         }
         currentItem = newItem;
+        this.GetComponentInParent<FirstPersonController>().PlayPickupSound ();
 
         for (int i = 0; i < keyPrefabNames.Length; i++) {
             if (keyPrefabNames[i] == currentItem) {
@@ -32,6 +34,7 @@ public class Interact : MonoBehaviour {
         if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), out hit, 3f, interactMask)) {
 
             print(gameObject + " was dropped");
+            this.GetComponentInParent<FirstPersonController>().PlayDropSound();
 
             for (int i = 0; i < keyPrefabNames.Length; i++) {
                 if (keyPrefabNames[i] == currentItem) {

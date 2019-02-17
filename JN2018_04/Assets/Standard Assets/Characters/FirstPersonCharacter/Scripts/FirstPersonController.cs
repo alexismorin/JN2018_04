@@ -27,6 +27,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        [SerializeField] private AudioClip m_PickupSound;
+        [SerializeField] private AudioClip m_DropSound;
+        [SerializeField] private AudioClip m_OpenCellSound;
+        [SerializeField] private AudioClip m_VictorySound;
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -259,8 +263,32 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //Make player focus on guard that caught them.
         public void IsCaught(GameObject guard)
         {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            transform.LookAt(guard.transform);
+            //gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            //transform.LookAt(guard.transform);
+        }
+
+        public void PlayPickupSound()
+        {
+            m_AudioSource.clip = m_PickupSound;
+            m_AudioSource.Play();
+        }
+
+        public void PlayDropSound()
+        {
+            m_AudioSource.clip = m_DropSound;
+            m_AudioSource.Play();
+        }
+
+        public void PlayOpenCellSound()
+        {
+            m_AudioSource.clip = m_OpenCellSound;
+            m_AudioSource.Play();
+        }
+
+        public void PlayVictorySound()
+        {
+            m_AudioSource.clip = m_VictorySound;
+            m_AudioSource.Play();
         }
     }
 }
