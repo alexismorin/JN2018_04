@@ -7,7 +7,7 @@ public class ScrambleZones : MonoBehaviour {
 
     [MenuItem ("Tools/Stock Save")]
     private static void StockSave () {
-        PlayerPrefs.SetString ("guardsCaseCode", "0-10-20-30-40-50-12-25-64-25-63-74-");
+        PlayerPrefs.SetString ("guardsCaseCode", "5-7-2-23-43-20-35-12-53-28");
     }
     /*
         [MenuItem ("Tools/Scramble Zones")]
