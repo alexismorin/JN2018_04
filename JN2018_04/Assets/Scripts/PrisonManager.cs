@@ -100,7 +100,7 @@ public class PrisonManager : MonoBehaviour {
         }
 
         PlayerPrefs.SetString ("itemCaseCode", itemCaseCode);
-        PlayerPrefs.SetString ("guardsCaseCode", itemCaseCode);
+        PlayerPrefs.SetString ("guardsCaseCode", guardsCaseCode);
 
     }
 
@@ -212,21 +212,24 @@ public class PrisonManager : MonoBehaviour {
         int spawnPointC = int.Parse (itemCaseCodeDecrypted[2]);
         int spawnPointD = int.Parse (itemCaseCodeDecrypted[3]);
 
-        foreach (GameObject spawnLocations in keySpawnLocations) {
-            if (spawnLocations.transform.parent.GetComponent<Zone> ().zoneID == spawnPointA) {
-                spawnLocations.transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[0]);
+        for (int i = 0; i < keySpawnLocations.Length; i++) {
+            if (keySpawnLocations[i].transform.parent.GetComponent<Zone> ().zoneID == spawnPointA) {
+                print (i);
+                print (keySpawnLocations[i].transform.parent.GetComponent<Zone> ().zoneID + "and" + spawnPointA);
+
+                keySpawnLocations[i].transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[0]);
             }
 
-            if (spawnLocations.transform.parent.GetComponent<Zone> ().zoneID == spawnPointB) {
-                spawnLocations.transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[1]);
+            if (keySpawnLocations[i].transform.parent.GetComponent<Zone> ().zoneID == spawnPointB) {
+                keySpawnLocations[i].transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[1]);
             }
 
-            if (spawnLocations.transform.parent.GetComponent<Zone> ().zoneID == spawnPointC) {
-                spawnLocations.transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[2]);
+            if (keySpawnLocations[i].transform.parent.GetComponent<Zone> ().zoneID == spawnPointC) {
+                keySpawnLocations[i].transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[2]);
             }
 
-            if (spawnLocations.transform.parent.GetComponent<Zone> ().zoneID == spawnPointD) {
-                spawnLocations.transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[3]);
+            if (keySpawnLocations[i].transform.parent.GetComponent<Zone> ().zoneID == spawnPointD) {
+                keySpawnLocations[i].transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[3]);
             }
 
         }
@@ -238,7 +241,7 @@ public class PrisonManager : MonoBehaviour {
             currentZone.GetComponent<Zone> ().ResetGuards ();
 
             for (int i = 0; i < guardsCaseCodeDecrypted.Length; i++) {
-                if (int.Parse (guardsCaseCodeDecrypted[i]) == currentZone.GetComponent<Zone> ().zoneID && currentZone.GetComponent<Zone> ().zoneID % 2 == 0) {
+                if (int.Parse (guardsCaseCodeDecrypted[i]) == currentZone.GetComponent<Zone> ().zoneID) { // && currentZone.GetComponent<Zone> ().zoneID% 2 == 0
                     currentZone.GetComponent<Zone> ().EnableGuards ();
                 }
             }
