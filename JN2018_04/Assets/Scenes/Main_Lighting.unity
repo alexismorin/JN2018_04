@@ -180,6 +180,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: pf_CeilingLamp (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 8250471219187994323, guid: 4c9ada5287e94c344aeef28d68703215,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c9ada5287e94c344aeef28d68703215, type: 3}
 --- !u!1001 &64232415

@@ -169,7 +169,8 @@ public class PrisonManager : MonoBehaviour {
         GameObject playerObject = GameObject.Find ("Player");
         playerObject.GetComponent<FirstPersonController> ().enabled = false;
         playerObject.transform.GetChild (0).GetComponent<Interact> ().Void ();
-        playerObject.transform.position = spawnPoints[Random.Range (0, spawnPoints.Length)].transform.position;
+
+        playerObject.transform.position = spawnPoints[Random.Range (0, spawnPoints.Length)].GetComponent<SpawnZone> ().dropLocation.position;
 
         playerText.color = playerColors[currentPlayer - 1];
         playerText.text = "Player " + currentPlayer.ToString ();
