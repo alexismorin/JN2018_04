@@ -86,7 +86,7 @@ public class PrisonManager : MonoBehaviour {
     }
 
     void GetLatestCaseCode () {
-        guardsCaseCode = PlayerPrefs.GetString ("guardsCaseCode", "0-1-2-3-");
+        guardsCaseCode = PlayerPrefs.GetString ("guardsCaseCode", "5-7-2-23-43-20-35-12-53-28");
         itemCaseCode = guardsCaseCode;
 
         string[] tempDecryptedItemCaseCode = itemCaseCode.Split (separatingChars, System.StringSplitOptions.RemoveEmptyEntries);
