@@ -30,6 +30,7 @@ public class PrisonManager : MonoBehaviour {
     public Text wardenDialog;
     public Text escapeStartedDialog;
     public bool escapeStarted;
+    public GameState stateManager;
 
     void Update () {
 
@@ -120,6 +121,9 @@ public class PrisonManager : MonoBehaviour {
 
     void StartNewGame () {
 
+        PlayerPrefs.SetInt ("sucessfulEscapes", 0);
+        PlayerPrefs.SetFloat ("sucessfulTimer", 0);
+
         openExits[0] = "a";
         openExits[1] = "b";
         openExits[2] = "c";
@@ -202,11 +206,29 @@ public class PrisonManager : MonoBehaviour {
 
     public void SpawnItems () { // forgive me justin
 
-        for (int i = 0; i < keysPrefabs.Length; i++) {
-            GameObject[] keySpawnLocations = GameObject.FindGameObjectsWithTag ("keySpawnLocation");
-            int dice = Random.Range (0, keySpawnLocations.Length);
-            keySpawnLocations[dice].transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[i]);
-            keySpawnLocations[dice].tag = "keySpawnLocationSpent";
+        GameObject[] keySpawnLocations = GameObject.FindGameObjectsWithTag ("keySpawnLocation");
+        int spawnPointA = int.Parse (itemCaseCodeDecrypted[0]);
+        int spawnPointB = int.Parse (itemCaseCodeDecrypted[1]);
+        int spawnPointC = int.Parse (itemCaseCodeDecrypted[2]);
+        int spawnPointD = int.Parse (itemCaseCodeDecrypted[3]);
+
+        foreach (GameObject spawnLocations in keySpawnLocations) {
+            if (spawnLocations.transform.parent.GetComponent<Zone> ().zoneID == spawnPointA) {
+                spawnLocations.transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[0]);
+            }
+
+            if (spawnLocations.transform.parent.GetComponent<Zone> ().zoneID == spawnPointB) {
+                spawnLocations.transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[1]);
+            }
+
+            if (spawnLocations.transform.parent.GetComponent<Zone> ().zoneID == spawnPointC) {
+                spawnLocations.transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[2]);
+            }
+
+            if (spawnLocations.transform.parent.GetComponent<Zone> ().zoneID == spawnPointD) {
+                spawnLocations.transform.parent.GetComponent<Zone> ().SpawnItemInZone (keysPrefabs[3]);
+            }
+
         }
 
     }
@@ -236,6 +258,8 @@ public class PrisonManager : MonoBehaviour {
         PlayerPrefs.SetFloat ("PlayerTime" + currentPlayer.ToString (), alarmTimer);
 
         if (currentPlayer == 4) {
+            stateManager.Win ();
+
             // end game
         } else {
             PlayerPrefs.SetString ("guardsCaseCode", pendingNewCaseCode);
