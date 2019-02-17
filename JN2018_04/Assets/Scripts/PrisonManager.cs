@@ -51,6 +51,9 @@ public class PrisonManager : MonoBehaviour {
     }
 
     public void Alarm () {
+
+        GameObject.Find ("AlarmSound").GetComponent<AudioSource> ().Play ();
+
         GameObject[] guards = GameObject.FindGameObjectsWithTag ("guard");
         for (int i = 0; i < guards.Length; i++) {
             guards[i].SendMessage ("Alarm", SendMessageOptions.DontRequireReceiver);

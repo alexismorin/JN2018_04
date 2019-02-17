@@ -14,12 +14,15 @@ public class TutorialCellDoor : MonoBehaviour {
     void Start () {
         manager = GameObject.Find ("GameStateManager").GetComponent<PrisonManager> ();
         inventory = GameObject.Find ("FirstPersonCharacter").GetComponent<Interact> ();
-        player = GameObject.Find("Player");
+        player = GameObject.Find ("Player");
     }
 
     public void Interact (string interactedItem) {
         if (interactedItem == exitType) {
-            player.GetComponent<FirstPersonController>().PlayOpenCellSound();
+
+            transform.parent.GetComponent<AudioSource> ().Play ();
+
+            player.GetComponent<FirstPersonController> ().PlayOpenCellSound ();
             inventory.Void ();
             Destroy (gameObject);
         }
