@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitType: e
   destroyTarget: {fileID: 85273614554450275}
+  player: {fileID: 0}
 --- !u!1 &85273615448547181
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +271,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d74a3b89540d89946a5c470a80e9ce4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -32,6 +32,9 @@ public class PrisonManager : MonoBehaviour {
     public bool escapeStarted;
     public GameState stateManager;
 
+    string UIitemCaseCode;
+    string UIguardCaseCode;
+
     void Update () {
 
         if (alarmTimer <= 0f) {
@@ -47,7 +50,7 @@ public class PrisonManager : MonoBehaviour {
         }
     }
 
-    void Alarm () {
+    public void Alarm () {
         GameObject[] guards = GameObject.FindGameObjectsWithTag ("guard");
         for (int i = 0; i < guards.Length; i++) {
             guards[i].SendMessage ("Alarm", SendMessageOptions.DontRequireReceiver);
@@ -106,10 +109,34 @@ public class PrisonManager : MonoBehaviour {
 
     void DecryptItemCaseCode () { // turns string into data we can use for spawners
         itemCaseCodeDecrypted = itemCaseCode.Split (separatingChars, System.StringSplitOptions.RemoveEmptyEntries);
+
+        if (itemCaseCodeDecrypted.Length > 4) {
+            string[] tempItem = itemCaseCodeDecrypted;
+            itemCaseCodeDecrypted = new string[4];
+            for (int i = 0; i < itemCaseCodeDecrypted.Length; i++) {
+                itemCaseCodeDecrypted[i] = tempItem[i];
+            }
+        }
+
+        for (int u = 0; u < itemCaseCodeDecrypted.Length; u++) {
+            UIitemCaseCode += (itemCaseCodeDecrypted[u] + "-");
+        }
     }
 
     void DecryptGuardsCaseCode () {
         guardsCaseCodeDecrypted = guardsCaseCode.Split (separatingChars, System.StringSplitOptions.RemoveEmptyEntries);
+
+        if (guardsCaseCodeDecrypted.Length > 10 + currentPlayer) {
+            string[] tempGuard = guardsCaseCodeDecrypted;
+            guardsCaseCodeDecrypted = new string[10 + currentPlayer];
+            for (int i = 0; i < guardsCaseCodeDecrypted.Length; i++) {
+                guardsCaseCodeDecrypted[i] = tempGuard[i];
+            }
+        }
+
+        for (int u = 0; u < guardsCaseCodeDecrypted.Length; u++) {
+            UIguardCaseCode += (guardsCaseCodeDecrypted[u] + "-");
+        }
     }
 
     void Start () {
@@ -123,6 +150,9 @@ public class PrisonManager : MonoBehaviour {
 
         PlayerPrefs.SetInt ("sucessfulEscapes", 0);
         PlayerPrefs.SetFloat ("sucessfulTimer", 0);
+
+        UIitemCaseCode = "";
+        UIguardCaseCode = "";
 
         openExits[0] = "a";
         openExits[1] = "b";
@@ -150,6 +180,9 @@ public class PrisonManager : MonoBehaviour {
     void StartNewEscape () {
 
         GetLatestCaseCode ();
+
+        UIitemCaseCode = "";
+        UIguardCaseCode = "";
         pendingNewCaseCode = "";
 
         currentPlayer++;
@@ -185,10 +218,10 @@ public class PrisonManager : MonoBehaviour {
         GameObject playerObject = GameObject.Find ("Player");
         playerObject.GetComponent<FirstPersonController> ().enabled = true;
 
-        wardenDialog.text = "Alright Inmates, ever since the escape of inmate " + itemCaseCode + "Alpha, we've strenghted security in cell blocks " + guardsCaseCode + "Pendleton accordingly and alarm timers have been shortened to " + alarmTimer + " seconds. The escape was the first we've had and the last we'll have, so dont try anything funny.";
+        wardenDialog.text = "Alright Inmates, ever since the escape of inmate " + UIitemCaseCode + "Alpha, we've strenghted security in cell blocks " + UIguardCaseCode + "Pendleton accordingly and alarm timers have been shortened to " + alarmTimer + " seconds. The escape was the first we've had and the last we'll have, so dont try anything funny.";
         wardenDialog.enabled = true;
 
-        Invoke ("HideWardenDialog", 20f);
+        //    Invoke ("HideWardenDialog", 20f);
     }
 
     public void HideWardenDialog () {
@@ -198,6 +231,7 @@ public class PrisonManager : MonoBehaviour {
     public void StartEscape () {
         escapeStarted = true;
         escapeStartedDialog.enabled = true;
+        HideWardenDialog ();
         Invoke ("HideStartEscapeDialog", 2f);
     }
 

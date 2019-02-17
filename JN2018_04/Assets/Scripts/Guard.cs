@@ -8,6 +8,8 @@ public class Guard : MonoBehaviour {
 
     public Transform[] patrolPoints;
     public NavMeshAgent agent;
+    public Transform playerTransform;
+    public Transform rootTransform;
     public float wanderRate = 5f;
     public float chaseRate = 2f;
     GameObject target;
@@ -26,6 +28,7 @@ public class Guard : MonoBehaviour {
     }
 
     void Start () {
+        playerTransform = GameObject.Find ("Player").transform;
         manager = GameObject.Find ("GameStateManager").GetComponent<PrisonManager> ();
         InvokeRepeating ("Wander", wanderRate, wanderRate);
 
@@ -72,6 +75,9 @@ public class Guard : MonoBehaviour {
     }
 
     void Update () {
+
+        rootTransform.LookAt (playerTransform.position);
+
         if (target != null) {
             float dist = Vector3.Distance (target.transform.position, transform.position);
 
@@ -96,6 +102,8 @@ public class Guard : MonoBehaviour {
 
     void Catch () {
         print ("Player was caught!");
+
+        target.transform.GetChild (0).gameObject.GetComponent<Interact> ().Discard (target.transform.position);
 
         //Make player focus on guard that caught them.
         target.GetComponent<FirstPersonController> ().IsCaught (gameObject);

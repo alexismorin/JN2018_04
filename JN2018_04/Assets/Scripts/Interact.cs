@@ -17,7 +17,7 @@ public class Interact : MonoBehaviour {
             Discard (transform.parent.position);
         }
         currentItem = newItem;
-        this.GetComponentInParent<FirstPersonController>().PlayPickupSound ();
+        this.GetComponentInParent<FirstPersonController> ().PlayPickupSound ();
 
         for (int i = 0; i < keyPrefabNames.Length; i++) {
             if (keyPrefabNames[i] == currentItem) {
@@ -33,12 +33,12 @@ public class Interact : MonoBehaviour {
 
         if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), out hit, 3f, interactMask)) {
 
-            print(gameObject + " was dropped");
-            this.GetComponentInParent<FirstPersonController>().PlayDropSound();
+            print (gameObject + " was dropped");
+            this.GetComponentInParent<FirstPersonController> ().PlayDropSound ();
 
             for (int i = 0; i < keyPrefabNames.Length; i++) {
                 if (keyPrefabNames[i] == currentItem) {
-                    GameObject.Instantiate (keyPrefabs[i], hit.transform.position, Quaternion.identity);
+                    GameObject.Instantiate (keyPrefabs[i], hit.point, Quaternion.identity);
                 }
             }
 
@@ -68,7 +68,7 @@ public class Interact : MonoBehaviour {
                 if (hit.transform.gameObject.tag == "Untagged") {
                     if (currentItem != "none") {
                         print ("dropping");
-                        Discard (hit.transform.position);
+                        Discard (hit.point);
                     }
                 } else {
                     //                    print ("casting interact to item");
