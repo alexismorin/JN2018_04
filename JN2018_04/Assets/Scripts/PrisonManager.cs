@@ -50,7 +50,7 @@ public class PrisonManager : MonoBehaviour {
         }
     }
 
-    void Alarm () {
+    public void Alarm () {
         GameObject[] guards = GameObject.FindGameObjectsWithTag ("guard");
         for (int i = 0; i < guards.Length; i++) {
             guards[i].SendMessage ("Alarm", SendMessageOptions.DontRequireReceiver);
@@ -126,9 +126,9 @@ public class PrisonManager : MonoBehaviour {
     void DecryptGuardsCaseCode () {
         guardsCaseCodeDecrypted = guardsCaseCode.Split (separatingChars, System.StringSplitOptions.RemoveEmptyEntries);
 
-        if (guardsCaseCodeDecrypted.Length > 10) {
+        if (guardsCaseCodeDecrypted.Length > 10 + currentPlayer) {
             string[] tempGuard = guardsCaseCodeDecrypted;
-            guardsCaseCodeDecrypted = new string[10];
+            guardsCaseCodeDecrypted = new string[10 + currentPlayer];
             for (int i = 0; i < guardsCaseCodeDecrypted.Length; i++) {
                 guardsCaseCodeDecrypted[i] = tempGuard[i];
             }
