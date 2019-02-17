@@ -103,6 +103,8 @@ public class Guard : MonoBehaviour {
     void Catch () {
         print ("Player was caught!");
 
+        target.transform.GetChild (0).gameObject.GetComponent<Interact> ().Discard (target.transform.position);
+
         //Make player focus on guard that caught them.
         target.GetComponent<FirstPersonController> ().IsCaught (gameObject);
 

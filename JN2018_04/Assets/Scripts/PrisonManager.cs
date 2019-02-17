@@ -231,6 +231,7 @@ public class PrisonManager : MonoBehaviour {
     public void StartEscape () {
         escapeStarted = true;
         escapeStartedDialog.enabled = true;
+        HideWardenDialog ();
         Invoke ("HideStartEscapeDialog", 2f);
     }
 
