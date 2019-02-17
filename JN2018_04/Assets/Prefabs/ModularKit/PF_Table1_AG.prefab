@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8275911799385215420}
   - component: {fileID: 8275911799386509724}
   - component: {fileID: 8275911799387509596}
+  - component: {fileID: 5023964153851413080}
   m_Layer: 0
   m_Name: PF_Table1_AG
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6195d8bbf581a674896fea29b9b78f41, type: 3}
+  - {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5023964153851413080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275911799385509276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.033169, y: 0.80019724, z: 2.4942048}
+  m_Center: {x: 0.016584396, y: 0.39990133, z: 0}
