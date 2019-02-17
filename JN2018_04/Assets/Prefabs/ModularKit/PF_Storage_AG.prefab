@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9139723115323332791}
   - component: {fileID: 9139723115326232727}
   - component: {fileID: 9139723115325233751}
+  - component: {fileID: 4698743087979840051}
   m_Layer: 0
   m_Name: PF_Storage_AG
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21b684dc91cac90489225b0dd3fdc9d8, type: 3}
+  - {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4698743087979840051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9139723115323032727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0207102, y: 2, z: 0.5}
+  m_Center: {x: -0.00059711933, y: 1, z: -0.000100106}

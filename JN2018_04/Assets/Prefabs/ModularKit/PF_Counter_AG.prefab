@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 389033103979746940}
   - component: {fileID: 389033103980549724}
   - component: {fileID: 389033103981647004}
+  - component: {fileID: 6331914750009484846}
   m_Layer: 0
   m_Name: PF_Counter_AG
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9386e96418b4a4a48b4b7c661ef80c39, type: 3}
+  - {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6331914750009484846
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389033103979645532}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1.1835605, z: 1}
+  m_Center: {x: 0, y: 0.5917801, z: -0.0001000911}
