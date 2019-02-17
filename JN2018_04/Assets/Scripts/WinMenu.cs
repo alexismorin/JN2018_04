@@ -7,7 +7,7 @@ public class WinMenu : MonoBehaviour {
 
     void OnEnable () {
         Text textElement = GetComponent<Text> ();
-        textElement.text = "Escape complete!\nEscapees: " + PlayerPrefs.GetInt ("sucessfulEscapes") + "\nTotal Escape Time: " + PlayerPrefs.GetInt ("sucessfulTimer") + "\nScore: " + PlayerPrefs.GetInt ("sucessfulEscapes") * PlayerPrefs.GetInt ("sucessfulTimer");
+        textElement.text = "Escape complete!\nEscapees: " + PlayerPrefs.GetInt ("sucessfulEscapes") + "\nTotal Escape Time: " + PlayerPrefs.GetFloat ("sucessfulTimer") + "\nScore: " + PlayerPrefs.GetInt ("sucessfulEscapes") * PlayerPrefs.GetFloat ("sucessfulTimer");
 
     }
 

@@ -149,7 +149,7 @@ public class PrisonManager : MonoBehaviour {
     void StartNewGame () {
 
         PlayerPrefs.SetInt ("sucessfulEscapes", 0);
-        PlayerPrefs.SetFloat ("sucessfulTimer", 0);
+        PlayerPrefs.SetFloat ("sucessfulTimer", 0f);
 
         UIitemCaseCode = "";
         UIguardCaseCode = "";
