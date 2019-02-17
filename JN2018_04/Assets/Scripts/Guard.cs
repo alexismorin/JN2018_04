@@ -32,12 +32,18 @@ public class Guard : MonoBehaviour {
     }
 
     void Wander () {
+
+        materialRenderer.material.SetTexture ("_MainTex", idleTexture);
+
         Vector3 newDestination = patrolPoints[Random.Range (0, patrolPoints.Length)].position;
         agent.destination = newDestination;
 
     }
 
     void Chase () {
+
+        materialRenderer.material.SetTexture ("_MainTex", aimingTexture);
+
         if (agent.isOnNavMesh == true) {
             agent.destination = target.transform.position;
 

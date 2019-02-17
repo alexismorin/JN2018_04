@@ -5,7 +5,9 @@ Shader "Stepped"
 	Properties
 	{
 		_ASEOutlineColor( "Outline Color", Color ) = (0,0,0,0)
-		_ASEOutlineWidth( "Outline Width", Float ) = 0
+		_ASEOutlineWidth( "Outline Width", Float ) = 0.02
+		_ColorA("Color A", Color) = (0,0,0,0)
+		_ColorB("Color B", Color) = (0,0,0,0)
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
@@ -21,7 +23,7 @@ Shader "Stepped"
 		void outlineVertexDataFunc( inout appdata_full v, out Input o )
 		{
 			UNITY_INITIALIZE_OUTPUT( Input, o );
-			v.vertex.xyz *= ( 1 + _ASEOutlineWidth);
+			v.vertex.xyz += ( v.normal * _ASEOutlineWidth );
 		}
 		inline half4 LightingOutline( SurfaceOutput s, half3 lightDir, half atten ) { return half4 ( 0,0,0, s.Alpha); }
 		void outlineSurf( Input i, inout SurfaceOutput o )
@@ -36,53 +38,35 @@ Shader "Stepped"
 		Cull Back
 		CGINCLUDE
 		#include "UnityPBSLighting.cginc"
-		#include "UnityShaderVariables.cginc"
 		#include "Lighting.cginc"
 		#pragma target 3.0
 		struct Input
 		{
+			float3 worldPos;
 			float3 worldNormal;
 		};
 
-		struct SurfaceOutputCustomLightingCustom
-		{
-			half3 Albedo;
-			half3 Normal;
-			half3 Emission;
-			half Metallic;
-			half Smoothness;
-			half Occlusion;
-			half Alpha;
-			Input SurfInput;
-			UnityGIInput GIData;
-		};
+		uniform float4 _ColorA;
+		uniform float4 _ColorB;
 
-		inline half4 LightingStandardCustomLighting( inout SurfaceOutputCustomLightingCustom s, half3 viewDir, UnityGI gi )
+		void surf( Input i , inout SurfaceOutputStandard o )
 		{
-			UnityGIInput data = s.GIData;
-			Input i = s.SurfInput;
-			half4 c = 0;
+			float3 ase_worldPos = i.worldPos;
+			float3 ase_worldViewDir = normalize( UnityWorldSpaceViewDir( ase_worldPos ) );
 			float3 ase_worldNormal = i.worldNormal;
-			float dotResult20 = dot( _WorldSpaceLightPos0.xyz , ase_worldNormal );
-			float3 temp_cast_0 = (saturate( dotResult20 )).xxx;
-			c.rgb = temp_cast_0;
-			c.a = 1;
-			return c;
-		}
-
-		inline void LightingStandardCustomLighting_GI( inout SurfaceOutputCustomLightingCustom s, UnityGIInput data, inout UnityGI gi )
-		{
-			s.GIData = data;
-		}
-
-		void surf( Input i , inout SurfaceOutputCustomLightingCustom o )
-		{
-			o.SurfInput = i;
+			float fresnelNdotV2 = dot( ase_worldNormal, ase_worldViewDir );
+			float fresnelNode2 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV2, 5.0 ) );
+			float4 lerpResult3 = lerp( _ColorA , _ColorB , fresnelNode2);
+			o.Albedo = lerpResult3.rgb;
+			float temp_output_1_0 = 0.0;
+			o.Metallic = temp_output_1_0;
+			o.Smoothness = temp_output_1_0;
+			o.Alpha = 1;
 		}
 
 		ENDCG
 		CGPROGRAM
-		#pragma surface surf StandardCustomLighting keepalpha fullforwardshadows exclude_path:deferred 
+		#pragma surface surf Standard keepalpha fullforwardshadows exclude_path:deferred 
 
 		ENDCG
 		Pass
@@ -135,9 +119,10 @@ Shader "Stepped"
 				UNITY_INITIALIZE_OUTPUT( Input, surfIN );
 				float3 worldPos = IN.worldPos;
 				half3 worldViewDir = normalize( UnityWorldSpaceViewDir( worldPos ) );
+				surfIN.worldPos = worldPos;
 				surfIN.worldNormal = IN.worldNormal;
-				SurfaceOutputCustomLightingCustom o;
-				UNITY_INITIALIZE_OUTPUT( SurfaceOutputCustomLightingCustom, o )
+				SurfaceOutputStandard o;
+				UNITY_INITIALIZE_OUTPUT( SurfaceOutputStandard, o )
 				surf( surfIN, o );
 				#if defined( CAN_SKIP_VPOS )
 				float2 vpos = IN.pos;
@@ -152,20 +137,22 @@ Shader "Stepped"
 }
 /*ASEBEGIN
 Version=15401
-296;386;1421;1004;1061.37;210.2689;1.3;True;True
-Node;AmplifyShaderEditor.WorldNormalVector;19;-611.7386,300.3818;Float;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.WorldSpaceLightPos;25;-669.7945,151.5352;Float;False;0;3;FLOAT4;0;FLOAT3;1;FLOAT;2
-Node;AmplifyShaderEditor.DotProductOpNode;20;-360.8388,260.0818;Float;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.FogAndAmbientColorsNode;24;-330.4946,484.3352;Float;False;UNITY_LIGHTMODEL_AMBIENT;0;1;COLOR;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;23;-186.1946,377.7352;Float;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.LightAttenuation;21;-595.8706,-3.501472;Float;False;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SaturateNode;22;-209.5204,87.60011;Float;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;0,0;Float;False;True;2;Float;ASEMaterialInspector;0;0;CustomLighting;Stepped;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Back;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Opaque;0.5;True;True;0;False;Opaque;;Geometry;ForwardOnly;True;True;True;True;True;True;True;True;True;True;True;True;True;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;True;0;0;False;-1;0;False;-1;0;0;False;-1;0;False;-1;-1;False;-1;-1;False;-1;0;True;0;0,0,0,0;VertexScale;True;False;Cylindrical;False;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT3;0,0,0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
-WireConnection;20;0;25;1
-WireConnection;20;1;19;0
-WireConnection;23;0;20;0
-WireConnection;23;1;24;0
-WireConnection;22;0;20;0
-WireConnection;0;13;22;0
+249;176;1421;1010;1051.56;14.81618;1.369889;True;True
+Node;AmplifyShaderEditor.ColorNode;4;-459.5,-356;Float;False;Property;_ColorA;Color A;0;0;Create;True;0;0;False;0;0,0,0,0;0,0,0,0;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;5;-463.5,-190;Float;False;Property;_ColorB;Color B;1;0;Create;True;0;0;False;0;0,0,0,0;0,0,0,0;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.FresnelNode;2;-613.5,-17;Float;False;Standard;WorldNormal;ViewDir;False;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;5;False;1;FLOAT;0
+Node;AmplifyShaderEditor.StepOpNode;6;-269.5,16;Float;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.LerpOp;3;-212.5,-176;Float;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;7;-487.5,231;Float;False;Property;_Step;Step;2;0;Create;True;0;0;False;0;0.75;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;1;104.3833,-72.21401;Float;False;Constant;_Float0;Float 0;0;0;Create;True;0;0;False;0;0;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;278,-212;Float;False;True;2;Float;ASEMaterialInspector;0;0;Standard;Stepped;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Back;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Opaque;0.5;True;True;0;False;Opaque;;Geometry;ForwardOnly;True;True;True;True;True;True;True;True;True;True;True;True;True;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;True;0;0;False;-1;0;False;-1;0;0;False;-1;0;False;-1;-1;False;-1;-1;False;-1;0;True;0.02;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;16;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
+WireConnection;6;0;2;0
+WireConnection;6;1;7;0
+WireConnection;3;0;4;0
+WireConnection;3;1;5;0
+WireConnection;3;2;2;0
+WireConnection;0;0;3;0
+WireConnection;0;3;1;0
+WireConnection;0;4;1;0
 ASEEND*/
-//CHKSM=FD5912D7422C052A314751AF450C3D7B09192148
+//CHKSM=E44239494C98F6389DA75DC9E321B615CF06CCF9
