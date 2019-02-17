@@ -188,7 +188,7 @@ public class PrisonManager : MonoBehaviour {
         wardenDialog.text = "Alright Inmates, ever since the escape of inmate " + itemCaseCode + "Alpha, we've strenghted security in cell blocks " + guardsCaseCode + "Pendleton accordingly and alarm timers have been shortened to " + alarmTimer + " seconds. The escape was the first we've had and the last we'll have, so dont try anything funny.";
         wardenDialog.enabled = true;
 
-        Invoke ("HideWardenDialog", 12f);
+        Invoke ("HideWardenDialog", 20f);
     }
 
     public void HideWardenDialog () {
