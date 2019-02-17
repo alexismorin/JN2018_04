@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class ScrambleZones : MonoBehaviour {
 
+    [MenuItem ("Tools/Stock Save")]
+    private static void StockSave () {
+        PlayerPrefs.SetString ("guardsCaseCode", "0-10-20-30-");
+    }
+
     [MenuItem ("Tools/Scramble Zones")]
     private static void NewMenuOption () {
         GameObject[] zones = GameObject.FindGameObjectsWithTag ("zone");
