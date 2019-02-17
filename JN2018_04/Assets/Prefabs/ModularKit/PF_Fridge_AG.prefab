@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7835665306844588671}
   - component: {fileID: 7835665306845882975}
   - component: {fileID: 7835665306847013023}
+  - component: {fileID: 1702385111135489316}
   m_Layer: 0
   m_Name: PF_Fridge_AG
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eedf65ad2725d9641b74d1a4d03f3834, type: 3}
+  - {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1702385111135489316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7835665306844755551}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2.5, z: 0.81440866}
+  m_Center: {x: 0, y: 1.25, z: 0.007104248}
