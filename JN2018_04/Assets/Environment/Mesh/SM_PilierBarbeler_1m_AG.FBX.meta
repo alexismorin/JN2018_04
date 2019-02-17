@@ -1,20 +1,15 @@
 fileFormatVersion: 2
-guid: de8105f9f65ca0645b6aa3f30f2b9867
+guid: 5f9c49c33c598cb43a6d6b39a26beba8
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: M_Briques
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: d74a3b89540d89946a5c470a80e9ce4b, type: 2}
+    4300000: SM_PilierBarbeler_1m_AG
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
