@@ -13,9 +13,19 @@ public class Exit : MonoBehaviour {
 
     public void Interact (string interactedItem) {
         if (interactedItem == exitType) {
+
+            int hostA = PlayerPrefs.GetInt ("sucessfulEscapes");
+            float hostB = PlayerPrefs.GetInt ("sucessfulTimer");
+
+            hostA += 1;
+            hostB += manager.alarmTimer;
+
+            PlayerPrefs.SetInt ("sucessfulEscapes", hostA);
+            PlayerPrefs.SetFloat ("sucessfulTimer", hostB);
+
             exitType = "closed";
             PlayerPrefs.SetInt ("PlayerEscaped" + manager.currentPlayer.ToString (), 1);
-            print("Player escaped!");
+            print ("Player escaped!");
             manager.EndEscape ();
         }
     }
