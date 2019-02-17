@@ -293,6 +293,7 @@ public class PrisonManager : MonoBehaviour {
 
     public void EndEscape () {
 
+   GameObject.Find ("AlarmSound").GetComponent<AudioSource> ().Stop ();
         escapeStarted = false;
         isTimerDecreasing = false;
         PlayerPrefs.SetFloat ("lastAlarmTimer", alarmTimer);
