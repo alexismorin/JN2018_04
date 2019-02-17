@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main_Lighting.unity
     guid: 1f0cc2e26872d86489e3c18f056ac8c0
+  - enabled: 1
+    path: Assets/Scenes/Main_Furniture.unity
+    guid: 3df8c242933ffee4facf103c55412e5e
   m_configObjects: {}
