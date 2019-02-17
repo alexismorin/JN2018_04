@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3618711694452273586}
   - component: {fileID: 3618711694451503506}
   - component: {fileID: 3618711694450373458}
-  - component: {fileID: 2328725100885018722}
+  - component: {fileID: 1055087351439383881}
+  - component: {fileID: 3553762105602174558}
   m_Layer: 0
-  m_Name: SM_Door_AG
+  m_Name: PF_Door_AG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3618711694452632978}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 21.76, y: 0, z: 4.1333394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +79,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2328725100885018722
+--- !u!65 &1055087351439383881
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,5 +90,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1999999, y: 0.08000002, z: 2.0000005}
-  m_Center: {x: 0, y: 0, z: 1.0000002}
+  m_Size: {x: 1.2, y: 2, z: 0.15}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &3553762105602174558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3618711694452632978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13, y: 0.13, z: 0.35793787}
+  m_Center: {x: -0.52, y: 0.81, z: 0}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4522176910933993100}
   - component: {fileID: 4522176910931125932}
   - component: {fileID: 4522176910932092012}
+  - component: {fileID: 2285614494163292210}
   m_Layer: 0
   m_Name: PF_CardboardBox_AG
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 682180c9ca019094d80c6665ffd76ebc, type: 3}
+  - {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2285614494163292210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522176910934293164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51458925, y: 0.5205835, z: 0.52383995}
+  m_Center: {x: 0.007294625, y: 0.26029176, z: -0.0060679317}
