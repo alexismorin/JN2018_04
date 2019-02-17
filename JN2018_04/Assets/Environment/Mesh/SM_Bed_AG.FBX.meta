@@ -4,11 +4,31 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: SM_Bed_Base_AG
+    100004: SM_Bed_Drap_AG
+    100006: SM_Bed_Matelas_AG
+    100008: SM_Bed_Oreiller_AG
     400000: //RootNode
+    400002: SM_Bed_Base_AG
+    400004: SM_Bed_Drap_AG
+    400006: SM_Bed_Matelas_AG
+    400008: SM_Bed_Oreiller_AG
     2100000: No Name
     2300000: //RootNode
+    2300002: SM_Bed_Base_AG
+    2300004: SM_Bed_Drap_AG
+    2300006: SM_Bed_Matelas_AG
+    2300008: SM_Bed_Oreiller_AG
     3300000: //RootNode
+    3300002: SM_Bed_Base_AG
+    3300004: SM_Bed_Drap_AG
+    3300006: SM_Bed_Matelas_AG
+    3300008: SM_Bed_Oreiller_AG
     4300000: SM_Bed_AG
+    4300002: SM_Bed_Base_AG
+    4300004: SM_Bed_Drap_AG
+    4300006: SM_Bed_Matelas_AG
+    4300008: SM_Bed_Oreiller_AG
   externalObjects: {}
   materials:
     importMaterials: 1
