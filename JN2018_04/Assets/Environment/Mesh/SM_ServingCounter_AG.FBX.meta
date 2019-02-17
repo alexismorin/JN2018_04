@@ -4,11 +4,16 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: SM_ServingCounter_vitre_AG
     400000: //RootNode
+    400002: SM_ServingCounter_vitre_AG
     2100000: No Name
     2300000: //RootNode
+    2300002: SM_ServingCounter_vitre_AG
     3300000: //RootNode
+    3300002: SM_ServingCounter_vitre_AG
     4300000: SM_ServingCounter_AG
+    4300002: SM_ServingCounter_vitre_AG
   externalObjects: {}
   materials:
     importMaterials: 1

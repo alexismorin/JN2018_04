@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 667845847849452311}
   - component: {fileID: 667845847852843831}
   - component: {fileID: 667845847851745783}
+  - component: {fileID: 8634119943205185766}
   m_Layer: 0
   m_Name: PF_Furnace_AG
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ba1b83a8e9ffc754f87ce91baccb3264, type: 3}
+  - {fileID: 2100000, guid: c4648f913bb54b64698e6b48ce191e82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8634119943205185766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667845847849819959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.9221613, z: 1.0347917}
+  m_Center: {x: 0, y: 0.46108058, z: 0.017295778}
